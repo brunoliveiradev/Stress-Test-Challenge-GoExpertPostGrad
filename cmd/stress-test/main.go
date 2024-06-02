@@ -11,7 +11,7 @@ func main() {
 	cfg := configs.LoadConfig()
 
 	if cfg.URL == "" {
-		fmt.Println("A URL do serviço é obrigatória")
+		fmt.Println("The URL flag is required.")
 		flag.Usage()
 		return
 	}
@@ -19,9 +19,9 @@ func main() {
 	stressTest := stress.NewStressTest(cfg)
 	report, err := stressTest.Run()
 	if err != nil {
-		fmt.Println("Erro ao executar stress test:", err)
+		fmt.Println("Error to execute the stress test:", err)
 		return
 	}
 
-	fmt.Println(report.Generate())
+	report.PrintResults()
 }
